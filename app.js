@@ -25,42 +25,15 @@ server()
         res.sendStatus(200)
         console.log(`Message from chat : ${ msg }`);
     })
-//     .post('/notify', function(req, res, next) {
-//   var token = req.body.token;
-//   var message = req.body.message;
- 
-//   request({
-//     method: 'POST',
-//     uri: 'https://notify-api.line.me/api/notify',
-//     headers: {
-//       'Content-Type': 'application/x-www-form-urlencoded'
-//     },
-//     auth: {
-//       'bearer': token
-//     },
-//     form: {
-//       message: message
-//     }
-//   }, (err, httpResponse, body) => {
-//     if(err){
-//       console.log(err);
-//     } else {
-//       res.json({
-//         httpResponse: httpResponse,
-//         body: body
-//       });
-//     }
-//   });
-// })
-    .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
+     .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+    
     function reply(reply_token, msg) {
         let headers = {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer {69GpTgBkddFvBR7hH0ghIUBmBs3zPQKSxbhzTy7x5RBoBGHxS7VJlTxI5wH7BybHu9yOJ3fS5Hh9pmGnT/dBVjXeqaJfRwb/r08p5SDQtCauxh4t7VygyxRZ6EMIBCMayzoqas0TBBt3V+P1xijEZgdB04t89/1O/w1cDnyilFU=}'
         }
         let headers2 = {
-            
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Bearer BV9HXH2u3ECb5rH5Y9NwxM0UqtN2QO2ME5jaV7Un0XY'
         }
         let body = JSON.stringify({
@@ -71,7 +44,10 @@ server()
             }]
         })
         let body2 =JSON.stringify( {
-            message: 'Help me !, I could not answer'
+            messages: [{
+                type: 'text',
+                text: msg
+            }]
         })
         request.post({
             url: 'https://api.line.me/v2/bot/message/reply',
