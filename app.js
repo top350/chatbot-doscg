@@ -1,6 +1,43 @@
+
 const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
 const app = express()
 const port = process.env.PORT || 4000
-app.get('/', (req, res) => res.send('Hello'))
-app.get('/webhook', (req, res) => res.sendStatus(200))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use
+
+app.get('/', (req, res) => {
+   res.send('ok')
+})
+app.post('/webhook', (req, res) => {
+    let reply_token = req.body.events[0].replyToken
+    reply(reply_token)
+    res.sendStatus(200)
+})
 app.listen(port)
+function reply(reply_token) {
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer {9960e6fa24d0a193487a68283e1898d6}'
+    }
+    let body = JSON.stringify({
+        replyToken: reply_token,
+        messages: [{
+            type: 'hey',
+            text: 'Hello man'
+        },
+        {
+            type: 'Ask me',
+            text: 'How are you?'
+        }]
+    })
+    request.post({
+        url: 'https://api.line.me/v2/bot/message/reply',
+        headers: headers,
+        body: body
+    }, (err, res, body) => {
+        console.log('status = ' + res.statusCode);
+    });
+}
