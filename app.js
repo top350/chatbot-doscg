@@ -6,19 +6,15 @@ const axios = require('axios');
 server()
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({ extended: false}))
-    .get('/', (req, res) => res.send(`Hi there! This is a nodejs-line-api running on PORT: ${ PORT }`))
+    .get('/', (req, res) => {
+        var result = getData()
+        res.send(result)
+    }
+   
+    )
    
     .post('/webhook', function (req, res) {
-        // let replyToken = req.body.events[0].replyToken;
-        // let msg = req.body.events[0].message.text;
-        
-        // console.log(`Message token : ${ replyToken }`);
-        // console.log(`Message from chat : ${ msg }`);
-
-        // res.json({
-        //     status: 200,
-        //     message: `Webhook is working!`
-        // });
+     
         let reply_token = req.body.events[0].replyToken
         let msg = req.body.events[0].message.text
         reply(reply_token, msg)
@@ -28,6 +24,7 @@ server()
      .listen(PORT, () => console.log(`Listening on ${ PORT }`));
     
     function reply(reply_token, msg) {
+        var result = getData()
         let headers = {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer {69GpTgBkddFvBR7hH0ghIUBmBs3zPQKSxbhzTy7x5RBoBGHxS7VJlTxI5wH7BybHu9yOJ3fS5Hh9pmGnT/dBVjXeqaJfRwb/r08p5SDQtCauxh4t7VygyxRZ6EMIBCMayzoqas0TBBt3V+P1xijEZgdB04t89/1O/w1cDnyilFU=}'
@@ -40,7 +37,7 @@ server()
             replyToken: reply_token,
             messages: [{
                 type: 'text',
-                text: msg
+                text: `NewConfirmed:${result.NewConfirmed}\nTotalConfirmed:${result.TotalConfirmed}`
             }]
         })
         let body2 ={
@@ -53,17 +50,7 @@ server()
         }, (err, res, body) => {
             console.log('status = ' + res.statusCode);
         });
-        // axios.post('https://notify-api.line.me/api/notify', {
-        //     body2
-            
-        //   },{headers:headers2})
-        //   .then(function (response) {
-            
-        //     console.log('status = ' + response.statusCode);
-        //   })
-        //   .catch(function (error) {
-        //     // console.log(error);
-        //   });
+      
         request.post({
             url: 'https://notify-api.line.me/api/notify',
             headers: headers2,
@@ -75,4 +62,21 @@ server()
         });
        
     }
+   function getData(){
+       var data;
+       axios.get('https://api.covid19api.com/summary')
+  .then(function (response) {
+    // handle success
+    console.log(response.data.Global);
+    
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
    
+  });
+return data;
+   }
