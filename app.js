@@ -83,9 +83,7 @@ server()
         request.post({
             url: 'https://notify-api.line.me/api/notify',
             headers: headers2,
-            body:{
-                message:'Help me !, I could not answer'
-            }
+            body: body2
         }, (err, res, body) => {
             console.log(err)
             console.log(body)
