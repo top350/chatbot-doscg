@@ -66,11 +66,11 @@ server()
     }
    function getData(){
        
-       axios.get('https://api.covid19api.com/summary')
+       axios.get('covid19.th-stat.com/api/open/today')
   .then(function (response) {
     // handle success
-    console.log(response.data.Global);
-    result=response.data.Global
+    console.log(response.data);
+    result=response.data
   })
   .catch(function (error) {
     // handle error
