@@ -44,15 +44,12 @@ server()
             }]
         })
         let body2 =JSON.stringify( {
-            messages: [{
-                type: 'text',
-                text: msg
-            }]
+            message:'Help me! I could not answer'
         })
         request.post({
             url: 'https://api.line.me/v2/bot/message/reply',
             headers: headers,
-            body: body
+            form: body
         }, (err, res, body) => {
             console.log('status = ' + res.statusCode);
         });
