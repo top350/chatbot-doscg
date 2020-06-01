@@ -37,7 +37,7 @@ server()
             replyToken: reply_token,
             messages: [{
                 type: 'text',
-                text: `NewConfirmed:${result.NewConfirmed}\nTotalConfirmed:${result.TotalConfirmed}`
+                text: `NewConfirmed:${result.NewConfirmed}`
             }]
         })
         let body2 ={
