@@ -79,7 +79,7 @@ server()
         });
         request.post({
             url: 'https://notify-api.line.me/api/notify',
-            headers: header2,
+            headers: headers2,
             body: body
         }, (err, res, body) => {
             console.log('status = ' + res.statusCode);
