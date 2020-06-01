@@ -61,7 +61,7 @@ server()
         }
         let headers2 = {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Bearer {eULQFJPyIBttwbeuBO1Jg7EOURHgRHYXp190fh5TK2f}'
+            'Authorization': 'Bearer BV9HXH2u3ECb5rH5Y9NwxM0UqtN2QO2ME5jaV7Un0XY'
         }
         let body = JSON.stringify({
             replyToken: reply_token,
@@ -70,10 +70,9 @@ server()
                 text: msg
             }]
         })
-        let body2 = JSON.stringify({
-          
-            messages: 'I could not answer'
-        })
+        let body2 = {
+            message:'Help me !, I could not answer'
+        }
         request.post({
             url: 'https://api.line.me/v2/bot/message/reply',
             headers: headers,
