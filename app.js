@@ -43,9 +43,9 @@ server()
                 text: msg
             }]
         })
-        let body2 =JSON.stringify( {
+        let body2 ={
             message:'Help me! I could not answer'
-        })
+        }
         request.post({
             url: 'https://api.line.me/v2/bot/message/reply',
             headers: headers,
