@@ -8,8 +8,7 @@ server()
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({ extended: false}))
     .get('/', (req, res) => {
-        var result = getData()
-        res.send(result)
+        res.send('Serve has started')
     }
    
     )
