@@ -2,7 +2,7 @@ const server = require('express');
 const PORT = process.env.PORT || 9999;
 const request = require('request');
 const bodyParser = require('body-parser');
-
+const axios = require('axios');
 server()
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({ extended: false}))
@@ -80,15 +80,26 @@ server()
         }, (err, res, body) => {
             console.log('status = ' + res.statusCode);
         });
-        request.post({
-            url: 'https://notify-api.line.me/api/notify',
-            headers: headers2,
-            body: body2
-        }, (err, res, body) => {
-            console.log(err)
-            console.log(body)
+        axios.post('https://notify-api.line.me/api/notify', {
+            message: 'Help me! I could not answer',
+            
+          },{headers:headers2})
+          .then(function (response) {
+            
             console.log('status = ' + res.statusCode);
-        });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        // request.post({
+        //     url: 'https://notify-api.line.me/api/notify',
+        //     headers: headers2,
+        //     body: body2
+        // }, (err, res, body) => {
+        //     console.log(err)
+        //     console.log(body)
+        //     console.log('status = ' + res.statusCode);
+        // });
        
     }
    
