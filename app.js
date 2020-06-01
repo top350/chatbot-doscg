@@ -49,7 +49,7 @@ server()
         request.post({
             url: 'https://api.line.me/v2/bot/message/reply',
             headers: headers,
-            form: body
+            body: body
         }, (err, res, body) => {
             console.log('status = ' + res.statusCode);
         });
@@ -67,7 +67,7 @@ server()
         request.post({
             url: 'https://notify-api.line.me/api/notify',
             headers: headers2,
-            body: body2
+            form: body2
         }, (err, res, body) => {
             console.log(err)
             console.log(body)
