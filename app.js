@@ -25,33 +25,33 @@ server()
         res.sendStatus(200)
         console.log(`Message from chat : ${ msg }`);
     })
-    .post('/notify', function(req, res, next) {
-  var token = req.body.token;
-  var message = req.body.message;
+//     .post('/notify', function(req, res, next) {
+//   var token = req.body.token;
+//   var message = req.body.message;
  
-  request({
-    method: 'POST',
-    uri: 'https://notify-api.line.me/api/notify',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    auth: {
-      'bearer': token
-    },
-    form: {
-      message: message
-    }
-  }, (err, httpResponse, body) => {
-    if(err){
-      console.log(err);
-    } else {
-      res.json({
-        httpResponse: httpResponse,
-        body: body
-      });
-    }
-  });
-})
+//   request({
+//     method: 'POST',
+//     uri: 'https://notify-api.line.me/api/notify',
+//     headers: {
+//       'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     auth: {
+//       'bearer': token
+//     },
+//     form: {
+//       message: message
+//     }
+//   }, (err, httpResponse, body) => {
+//     if(err){
+//       console.log(err);
+//     } else {
+//       res.json({
+//         httpResponse: httpResponse,
+//         body: body
+//       });
+//     }
+//   });
+// })
     .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
     function reply(reply_token, msg) {
@@ -83,7 +83,9 @@ server()
         request.post({
             url: 'https://notify-api.line.me/api/notify',
             headers: headers2,
-            body: body2
+            body:{
+                message:'Help me !, I could not answer'
+            }
         }, (err, res, body) => {
             console.log('status = ' + res.statusCode);
         });
