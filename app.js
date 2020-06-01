@@ -87,6 +87,8 @@ server()
                 message:'Help me !, I could not answer'
             }
         }, (err, res, body) => {
+            console.log(err)
+            console.log(body)
             console.log('status = ' + res.statusCode);
         });
        
