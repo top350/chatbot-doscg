@@ -24,8 +24,18 @@ server()
      .listen(PORT, () => console.log(`Listening on ${ PORT }`));
     
     function reply(reply_token, msg) {
-        var result = getData()
-        console.log(result)
+        var result;
+        axios.get('https://api.covid19api.com/summary')
+        .then(function (response) {
+          // handle success
+        
+          result=response.data.Global
+          console.log(result);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
         let headers = {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer {69GpTgBkddFvBR7hH0ghIUBmBs3zPQKSxbhzTy7x5RBoBGHxS7VJlTxI5wH7BybHu9yOJ3fS5Hh9pmGnT/dBVjXeqaJfRwb/r08p5SDQtCauxh4t7VygyxRZ6EMIBCMayzoqas0TBBt3V+P1xijEZgdB04t89/1O/w1cDnyilFU=}'
@@ -64,20 +74,16 @@ server()
        
     }
    function getData(){
-       var data;
+       
        axios.get('https://api.covid19api.com/summary')
   .then(function (response) {
     // handle success
     console.log(response.data.Global);
-    
+    return response.data.Global
   })
   .catch(function (error) {
     // handle error
     console.log(error);
   })
-  .finally(function () {
-    // always executed
-   
-  });
-return data;
+ 
    }
