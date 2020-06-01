@@ -60,7 +60,7 @@ server()
             'Authorization': 'Bearer {69GpTgBkddFvBR7hH0ghIUBmBs3zPQKSxbhzTy7x5RBoBGHxS7VJlTxI5wH7BybHu9yOJ3fS5Hh9pmGnT/dBVjXeqaJfRwb/r08p5SDQtCauxh4t7VygyxRZ6EMIBCMayzoqas0TBBt3V+P1xijEZgdB04t89/1O/w1cDnyilFU=}'
         }
         let headers2 = {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            
             'Authorization': 'Bearer BV9HXH2u3ECb5rH5Y9NwxM0UqtN2QO2ME5jaV7Un0XY'
         }
         let body = JSON.stringify({
@@ -80,26 +80,26 @@ server()
         }, (err, res, body) => {
             console.log('status = ' + res.statusCode);
         });
-        axios.post('https://notify-api.line.me/api/notify', {
-            body2
+        // axios.post('https://notify-api.line.me/api/notify', {
+        //     body2
             
-          },{headers:headers2})
-          .then(function (response) {
+        //   },{headers:headers2})
+        //   .then(function (response) {
             
+        //     console.log('status = ' + response.statusCode);
+        //   })
+        //   .catch(function (error) {
+        //     // console.log(error);
+        //   });
+        request.post({
+            url: 'https://notify-api.line.me/api/notify',
+            headers: headers2,
+            body: body2
+        }, (err, res, body) => {
+            console.log(err)
+            console.log(body)
             console.log('status = ' + res.statusCode);
-          })
-          .catch(function (error) {
-            // console.log(error);
-          });
-        // request.post({
-        //     url: 'https://notify-api.line.me/api/notify',
-        //     headers: headers2,
-        //     body: body2
-        // }, (err, res, body) => {
-        //     console.log(err)
-        //     console.log(body)
-        //     console.log('status = ' + res.statusCode);
-        // });
+        });
        
     }
    
