@@ -60,7 +60,7 @@ server()
             'Authorization': 'Bearer {69GpTgBkddFvBR7hH0ghIUBmBs3zPQKSxbhzTy7x5RBoBGHxS7VJlTxI5wH7BybHu9yOJ3fS5Hh9pmGnT/dBVjXeqaJfRwb/r08p5SDQtCauxh4t7VygyxRZ6EMIBCMayzoqas0TBBt3V+P1xijEZgdB04t89/1O/w1cDnyilFU=}'
         }
         let headers2 = {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Bearer {eULQFJPyIBttwbeuBO1Jg7EOURHgRHYXp190fh5TK2f}'
         }
         let body = JSON.stringify({
@@ -69,6 +69,10 @@ server()
                 type: 'text',
                 text: msg
             }]
+        })
+        let body2 = JSON.stringify({
+          
+            messages: 'I could not answer'
         })
         request.post({
             url: 'https://api.line.me/v2/bot/message/reply',
@@ -80,7 +84,7 @@ server()
         request.post({
             url: 'https://notify-api.line.me/api/notify',
             headers: headers2,
-            body: body
+            body: body2
         }, (err, res, body) => {
             console.log('status = ' + res.statusCode);
         });
