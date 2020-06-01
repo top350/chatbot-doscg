@@ -70,9 +70,9 @@ server()
                 text: msg
             }]
         })
-        let body2 = {
+        let body2 =JSON.stringify( {
             message: 'Help me !, I could not answer'
-        }
+        })
         request.post({
             url: 'https://api.line.me/v2/bot/message/reply',
             headers: headers,
@@ -81,7 +81,7 @@ server()
             console.log('status = ' + res.statusCode);
         });
         axios.post('https://notify-api.line.me/api/notify', {
-            message: 'Help me! I could not answer',
+            body2
             
           },{headers:headers2})
           .then(function (response) {
@@ -89,7 +89,7 @@ server()
             console.log('status = ' + res.statusCode);
           })
           .catch(function (error) {
-            console.log(error);
+            // console.log(error);
           });
         // request.post({
         //     url: 'https://notify-api.line.me/api/notify',
