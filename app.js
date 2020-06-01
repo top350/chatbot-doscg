@@ -59,6 +59,10 @@ server()
             'Content-Type': 'application/json',
             'Authorization': 'Bearer {69GpTgBkddFvBR7hH0ghIUBmBs3zPQKSxbhzTy7x5RBoBGHxS7VJlTxI5wH7BybHu9yOJ3fS5Hh9pmGnT/dBVjXeqaJfRwb/r08p5SDQtCauxh4t7VygyxRZ6EMIBCMayzoqas0TBBt3V+P1xijEZgdB04t89/1O/w1cDnyilFU=}'
         }
+        let headers2 = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer {eULQFJPyIBttwbeuBO1Jg7EOURHgRHYXp190fh5TK2f}'
+        }
         let body = JSON.stringify({
             replyToken: reply_token,
             messages: [{
@@ -73,5 +77,13 @@ server()
         }, (err, res, body) => {
             console.log('status = ' + res.statusCode);
         });
+        request.post({
+            url: 'https://notify-api.line.me/api/notify',
+            headers: header2,
+            body: body
+        }, (err, res, body) => {
+            console.log('status = ' + res.statusCode);
+        });
+       
     }
    
