@@ -61,7 +61,7 @@ server()
         }
         let headers2 = {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Bearer {BV9HXH2u3ECb5rH5Y9NwxM0UqtN2QO2ME5jaV7Un0XY}'
+            'Authorization': 'Bearer BV9HXH2u3ECb5rH5Y9NwxM0UqtN2QO2ME5jaV7Un0XY'
         }
         let body = JSON.stringify({
             replyToken: reply_token,
