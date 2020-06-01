@@ -30,7 +30,7 @@ server()
     function reply(reply_token, msg) {
         let headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer {79f49fb4-b7b7-4773-8979-c86531bf164a }'
+            'Authorization': 'Bearer {69GpTgBkddFvBR7hH0ghIUBmBs3zPQKSxbhzTy7x5RBoBGHxS7VJlTxI5wH7BybHu9yOJ3fS5Hh9pmGnT/dBVjXeqaJfRwb/r08p5SDQtCauxh4t7VygyxRZ6EMIBCMayzoqas0TBBt3V+P1xijEZgdB04t89/1O/w1cDnyilFU=}'
         }
         let body = JSON.stringify({
             replyToken: reply_token,
