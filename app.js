@@ -70,8 +70,8 @@ server()
                 text: msg
             }]
         })
-        let body2 = JSON.stringify({
-            message:'Help me !, I could not answer'
+        let body2 = JSON({
+            message: 'Help me !, I could not answer'
         })
         request.post({
             url: 'https://api.line.me/v2/bot/message/reply',
